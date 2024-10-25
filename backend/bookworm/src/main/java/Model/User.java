@@ -1,8 +1,14 @@
 package Model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.validation.constraints.Size;
+
 
 import java.util.Date;
 
@@ -10,23 +16,33 @@ import java.util.Date;
 @Entity(name = "User")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotNull
+    @Size(min = 3, max = 50)
     private String username;
+
+    @NotNull
+    @Email
+    @Column(unique = true)
     private String email;
+
+    @NotNull
+    @Size(min = 4)
     private String password;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "register_date")
     private Date registerDate;
     private String image;
 
-    public User(Integer id, String username, String email, String password, Date registerDate, String image) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.registerDate = registerDate;
-        this.image = image;
+    @PrePersist
+    protected void onCreate() {
+        this.registerDate = new Date();
     }
 }
