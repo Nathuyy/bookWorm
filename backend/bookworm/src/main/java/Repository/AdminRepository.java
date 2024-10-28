@@ -1,4 +1,4 @@
-package repository;
+package Repository;
 
 import Model.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
