@@ -23,16 +23,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
-    @Size(min = 3, max = 50)
     private String username;
 
-    @NotNull
-    @Email
     @Column(unique = true)
     private String email;
 
-    @NotNull
     @Size(min = 4)
     private String password;
 
