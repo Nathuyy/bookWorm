@@ -10,7 +10,6 @@ import jakarta.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-@Table(name = "app_user") // Renomeie a tabela para evitar conflitos com palavras reservadas
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,7 +24,6 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @Size(min = 4)
     private String password;
 
     @Temporal(TemporalType.TIMESTAMP)
