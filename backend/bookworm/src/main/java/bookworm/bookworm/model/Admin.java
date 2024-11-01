@@ -1,43 +1,35 @@
-package Model;
+package bookworm.bookworm.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.validation.constraints.Size;
 
-
-import java.util.Date;
-
-@Table(name = "users")
-@Entity(name = "User")
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
-    private String username;
+    @NotNull
+    @Size(min = 3, max = 20)
+    private String name;
 
+    @NotNull
+    @Email
     @Column(unique = true)
     private String email;
 
+    @NotNull
     @Size(min = 4)
     private String password;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "register_date")
-    private Date registerDate;
-    private String image;
-
-    @PrePersist
-    protected void onCreate() {
-        this.registerDate = new Date();
-    }
 }

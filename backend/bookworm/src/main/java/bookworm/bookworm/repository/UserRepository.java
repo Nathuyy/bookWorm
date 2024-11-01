@@ -1,6 +1,6 @@
-package Repository;
+package bookworm.bookworm.repository;
 
-import Model.User;
+import bookworm.bookworm.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

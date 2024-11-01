@@ -1,9 +1,9 @@
-package Service;
+package bookworm.bookworm.service;
 
-import DTO.user.UserRegistrationDTO;
-import DTO.user.UserUpdateDTO;
-import Model.User;
-import Repository.UserRepository;
+import bookworm.bookworm.DTO.user.UserRegistrationDTO;
+import bookworm.bookworm.DTO.user.UserUpdateDTO;
+import bookworm.bookworm.model.User;
+import bookworm.bookworm.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

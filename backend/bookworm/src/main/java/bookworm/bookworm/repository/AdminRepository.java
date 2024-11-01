@@ -1,6 +1,6 @@
-package Repository;
+package bookworm.bookworm.repository;
 
-import Model.Admin;
+import bookworm.bookworm.model.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
