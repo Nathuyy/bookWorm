@@ -4,6 +4,11 @@ Bookworm é uma aplicação desenvolvida em Java com Spring Boot, destinada ao g
 
 ## Tecnologias Utilizadas
 
-- **Java**: Linguagem de programação utilizada para o desenvolvimento da aplicação.
-- **Spring Boot**: Framework que simplifica a criação de aplicações Java.
-- **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional utilizado para armazenar os dados da aplicação.
+BACKEND:
+- **Java**
+- **Spring Boot**
+- **PostgreSQL**
+
+FRONTEND:
+- **React**
+- **Typescript**
