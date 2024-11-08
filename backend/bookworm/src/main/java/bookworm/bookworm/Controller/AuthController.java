@@ -9,14 +9,13 @@ import bookworm.bookworm.security.TokenService;
 import bookworm.bookworm.service.AuthorizationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -58,7 +57,21 @@ public class AuthController {
         userRepository.save(newUser);
 
         return ResponseEntity.status(201).body("Successfully registered");
-
     }
 
+    @PostMapping("/check-username")
+    public ResponseEntity<Void> checkUsername(@RequestParam String username){
+        if (authorizationService.checkUsernameForRegistration(username)){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/check-email")
+    public ResponseEntity<Void> checkEmail(@RequestParam String email) {
+        if (authorizationService.checkEmailForRegistration(email)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+        return ResponseEntity.ok().build();
+    }
 }
