@@ -20,8 +20,6 @@ const LoginPage: React.FC = () => {
       
       localStorage.setItem("jwtToken", token);
 
-      console.log("ok-login");
-
       setEmail("");
       setPassword("");
 
