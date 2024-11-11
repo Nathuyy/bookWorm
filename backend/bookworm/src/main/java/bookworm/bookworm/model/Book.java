@@ -6,22 +6,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Genres {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String type;
+    private String title;
+    private String author;
+    private String description;
+    private Date publish_date;
+    private String cover_image;
 
-    @OneToMany(mappedBy = "genre")
-    private List<Book> books;
-
+    @ManyToOne
+    @JoinColumn(name = "genre_id", nullable = true)
+    private Genres genre;
 
 }
