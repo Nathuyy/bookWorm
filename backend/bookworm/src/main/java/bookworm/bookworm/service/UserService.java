@@ -24,12 +24,13 @@ public class UserService {
     @Transactional
     public ResponseEntity<String> registerNewUser(UserRegistrationDTO userRegistrationDTO) {
         if (userRepository.existsByEmail(userRegistrationDTO.getEmail())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already in use");
+            return ResponseEntity.status(409).body("Email already in use");
         }
 
         User newUser = mapDtoToUser(userRegistrationDTO);
         userRepository.save(newUser);
-        return ResponseEntity.status(HttpStatus.CREATED).body(USER_SUCESS);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully");
     }
 
     @Transactional
